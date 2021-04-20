@@ -21,7 +21,7 @@ export function App({ state, dispatch }) {
       </section>
       <hr />
       <section>
-        <h2>All Cocktails</h2>
+        <h2>Cocktails: {state.searchTerm}</h2>
         <AllCocktails
           allCocktails={state.allCocktails}
           dispatch={dispatch}

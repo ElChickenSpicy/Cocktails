@@ -24,7 +24,7 @@ export const SearchTerm = ({ searchTerm, dispatch }) => {
         autoComplete="off"
         value={searchTerm}
         onChange={onSearchTermChangeHandler}
-        placeholder="Search cocktails..."
+        placeholder="Search TheCocktailDB.com..."
       />
       {searchTerm.length > 0 && (
         <button
