@@ -1,7 +1,7 @@
-export const loadData = () => {
+export const loadData = query => {
   return async dispatch => {
     try {
-      const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+      const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
       if (response.ok) {
         const { drinks } = await response.json();
         dispatch({

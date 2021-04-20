@@ -4,9 +4,6 @@ import { FavouriteCocktails } from '../features/favouriteCocktails/FavouriteCock
 import { SearchTerm } from '../features/searchTerm/SearchTerm.js';
 
 export function App({ state, dispatch }) {
-  const visibleAllCocktails = getFilteredCocktails(state.allCocktails, state.searchTerm);
-  const visibleFavouriteCocktails = getFilteredCocktails(state.favouriteCocktails, state.searchTerm);
-
   return (
     <main>
       <section>
@@ -18,7 +15,7 @@ export function App({ state, dispatch }) {
       <section>
         <h2>Favourite Cocktails</h2>
         <FavouriteCocktails
-          favouriteCocktails={visibleFavouriteCocktails}
+          favouriteCocktails={state.favouriteCocktails}
           dispatch={dispatch}
         />
       </section>
@@ -26,14 +23,11 @@ export function App({ state, dispatch }) {
       <section>
         <h2>All Cocktails</h2>
         <AllCocktails
-          allCocktails={visibleAllCocktails}
+          allCocktails={state.allCocktails}
           dispatch={dispatch}
+          query={state.searchTerm}
         />
       </section>
     </main> 
-  )
-}
-
-function getFilteredCocktails(cocktails, searchTerm) {
-  return cocktails.filter(drink => drink.strDrink.toLowerCase().includes(searchTerm.toLowerCase()));
+  );
 }

@@ -5,11 +5,11 @@ import { addCocktail } from '../favouriteCocktails/favouriteCocktailsSlice.js';
 import { loadData } from './allCocktailsSlice';
 import heart from '../../images/heart.svg';
 
-export const AllCocktails = ({ allCocktails, dispatch }) => {
-  const onFirstRender = () => {
-    dispatch(loadData());
+export const AllCocktails = ({ allCocktails, dispatch, query }) => {
+  const onRender = () => {
+    dispatch(loadData(query));
   }
-  useEffect(onFirstRender, []);
+  useEffect(onRender, [query]);
   
   const onAddCocktailHandler = (cocktail) => {
     dispatch(addCocktail(cocktail));
