@@ -3,7 +3,7 @@
 
 ## Table of contents
 * [General info](#general-info)
-* [Screenshots](#screenshots)
+* [Screenshot](#screenshot)
 * [Libraries](#libraries)
 * [Code Exmaple](#code-example)
 * [Features](#features)
@@ -12,10 +12,11 @@
 ## General info
 Quick project to test and develop my understanding of Redux. Project adapted from a similar Redux learning project I completed as part of the Full-stack developer course on Codecademy.com.
 <br><br>
+Live version hosted on Netlify @ https://redux-cocktails.netlify.app/
 
 
-## Screenshots
-![Desktop View](https://github.com/ElChickenSpicy/Cocktails/blob/master/cocktails/src/images/screenshot.PNG)
+## Screenshot
+![Desktop View](https://github.com/ElChickenSpicy/Cocktails/blob/master/src/images/screenshot.PNG)
 
 ## Libraries
 * React
