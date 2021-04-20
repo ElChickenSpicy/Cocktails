@@ -17,7 +17,7 @@ export const FavouriteCocktails = ({ favouriteCocktails, dispatch }) =>{
 
   function createCocktailComponent(cocktail) {
     return (
-      <Cocktail cocktail={cocktail} key={cocktail.id}>
+      <Cocktail cocktail={cocktail} key={cocktail.idDrink}>
         <FavouriteButton
           onClickHandler={() => onRemoveCocktailHandler(cocktail)}
           icon={brokenHeart}

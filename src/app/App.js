@@ -1,7 +1,7 @@
 import React from 'react';
 import { AllCocktails } from '../features/allCocktails/AllCocktails.js';
-import { SearchTerm } from '../features/searchTerm/SearchTerm.js';
 import { FavouriteCocktails } from '../features/favouriteCocktails/FavouriteCocktails.js';
+import { SearchTerm } from '../features/searchTerm/SearchTerm.js';
 
 export function App({ state, dispatch }) {
   const visibleAllCocktails = getFilteredCocktails(state.allCocktails, state.searchTerm);
@@ -30,10 +30,10 @@ export function App({ state, dispatch }) {
           dispatch={dispatch}
         />
       </section>
-    </main>
+    </main> 
   )
 }
 
 function getFilteredCocktails(cocktails, searchTerm) {
-  return cocktails.filter(drink => drink.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  return cocktails.filter(drink => drink.strDrink.toLowerCase().includes(searchTerm.toLowerCase()));
 }

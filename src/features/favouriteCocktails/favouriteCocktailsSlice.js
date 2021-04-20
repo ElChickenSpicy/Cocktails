@@ -4,7 +4,7 @@ export const favouriteCocktailsReducer = (favouriteCocktails = initialState, act
     case 'favouriteCocktails/addCocktail':
       return [...favouriteCocktails, action.payload]
     case 'favouriteCocktails/removeCocktail':
-      return favouriteCocktails.filter(cocktail => cocktail.id !== action.payload.id)
+      return favouriteCocktails.filter(cocktail => cocktail.idDrink !== action.payload.idDrink)
     default:
       return favouriteCocktails;
   }

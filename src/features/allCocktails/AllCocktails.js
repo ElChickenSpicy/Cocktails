@@ -9,7 +9,7 @@ export const AllCocktails = ({ allCocktails, dispatch }) => {
   const onFirstRender = () => {
     dispatch(loadData());
   }
-  useEffect(onFirstRender, [])
+  useEffect(onFirstRender, []);
   
   const onAddCocktailHandler = (cocktail) => {
     dispatch(addCocktail(cocktail));
@@ -18,7 +18,7 @@ export const AllCocktails = ({ allCocktails, dispatch }) => {
   return (
     <div className="cocktail-container">
       {allCocktails.map((cocktail) => (
-        <Cocktail cocktail={cocktail} key={cocktail.id}>
+        <Cocktail cocktail={cocktail} key={cocktail.idDrink}>
           <FavouriteButton
             onClickHandler={() => onAddCocktailHandler(cocktail)}
             icon={heart}

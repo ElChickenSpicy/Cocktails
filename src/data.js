@@ -1,29 +1,23 @@
-import oldFashioned from './images/old-fashioned.webp';
-import negroni from './images/negroni.webp';
-import daquiri from './images/daquiri.webp';
-import martini from './images/martini.webp';
-import margarita from './images/margarita.webp';
-import espressoMartini from './images/espresso-martini.webp';
-import whiskeySour from './images/whiskey-sour.webp';
-import manhattan from './images/manhattan.webp';
-import aperol from './images/aperol-spritz.webp';
-import mojito from './images/mojito.webp';
-import bloodyMary from './images/bloody-mary.webp';
-import moscowMule from './images/moscow-mule.webp';
+async function makeRequest(query) {
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?${query}`);
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            return jsonResponse;
+        }
+    } catch(err) {
+        alert(err);
+    }
+}
 
-const cocktailObjects = [
-    { id: 0, name: 'Old Fashioned', img: oldFashioned },
-    { id: 1, name: 'Negroni', img: negroni},
-    { id: 2, name: 'Daquiri', img: daquiri},
-    { id: 3, name: 'Dirty Martini', img: martini},
-    { id: 4, name: 'Margarita', img: margarita},
-    { id: 5, name: 'Espresso Martini', img: espressoMartini},
-    { id: 6, name: 'Whiskey Sour', img: whiskeySour},
-    { id: 7, name: 'Manhattan', img: manhattan},
-    { id: 8, name: 'Aperol Spritz', img: aperol},
-    { id: 9, name: 'Mojito', img: mojito},
-    { id: 10, name: 'Bloody Mary', img: bloodyMary},
-    { id: 11, name: 'Moscow Mule', img: moscowMule}
-];
+export function getInitialCocktails() {
+    const initialIDs = ['11001', '11003', '11006', '11728', '11007', '17212', '11417', '11008', '178325', '11000', '11113', '11009'];
+    let initialCocktails = [];
 
-export default cocktailObjects;
+    initialIDs.forEach(async id => {
+        let returnedObject = await makeRequest(`i=${id}`);
+        initialCocktails.push(returnedObject.drinks[0]);
+    });
+
+    return initialCocktails;
+}
