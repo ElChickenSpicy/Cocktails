@@ -23,6 +23,7 @@ export const allCocktailsReducer = (allCocktails = initialState, action) => {
     case 'favouriteCocktails/addCocktail':
       return allCocktails.filter(cocktail => cocktail.idDrink !== action.payload.idDrink);
     case 'favouriteCocktails/removeCocktail':
+      if (allCocktails.filter(cocktail => cocktail.idDrink === action.payload.idDrink) > 0) return allCocktails;
       return [...allCocktails, action.payload]
     default:
       return allCocktails;
