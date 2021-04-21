@@ -21,31 +21,33 @@ Live version hosted on Netlify @ https://redux-cocktails.netlify.app/
 ## Libraries
 * React
 * Redux
+* redux-thunk
 
 ## Code Example
 Store/Root Reducer code
 ```javascript 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { allCocktailsReducer } from '../features/allCocktails/allCocktailsSlice.js';
 import { favouriteCocktailsReducer } from '../features/favouriteCocktails/favouriteCocktailsSlice.js';
 import { searchTermReducer } from '../features/searchTerm/searchTermSlice.js';
+import { ingredientsReducer } from '../features/ingredients/ingredientsSlice.js';
 
 export const store = createStore(combineReducers({
   allCocktails: allCocktailsReducer,
   favouriteCocktails: favouriteCocktailsReducer,
-  searchTerm: searchTermReducer
-}));
+  searchTerm: searchTermReducer,
+  ingredients: ingredientsReducer
+}), applyMiddleware(thunk));
 ```
 
 ## Features
-List of features ready and TODOs for future development
+List of completed features
 * Add cocktail to favourites
 * Remove cocktail from favourites
 * Search cocktails using a query string
-
-To-do list:
 * Dynamic cocktail data via API (https://www.thecocktaildb.com/)
-* Drill down into recipes, etc.
+* Display ingredients & instructions
 
 ## Status
-Project is: _in progress_
+Project is: _Completed_
