@@ -55,6 +55,7 @@ html, body, #root {
 }
 
 .cocktail {
+  margin-right: 7px;
   margin-bottom: 20px;
   padding: 16px 14px;
   border-radius: 6px;
@@ -90,7 +91,7 @@ html, body, #root {
 
 .cocktail-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
