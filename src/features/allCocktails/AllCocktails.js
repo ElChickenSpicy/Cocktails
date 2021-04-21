@@ -4,6 +4,7 @@ import FavouriteButton from "../../components/FavouriteButton";
 import RecipeButton from '../../components/RecipeButton';
 import { addCocktail } from '../favouriteCocktails/favouriteCocktailsSlice.js';
 import { loadData } from './allCocktailsSlice';
+import { showIngredients } from '../ingredients/ingredientsSlice';
 import heart from '../../images/heart.svg';
 import search from '../../images/search.svg';
 
@@ -15,6 +16,10 @@ export const AllCocktails = ({ allCocktails, dispatch, query }) => {
 
   const onAddCocktailHandler = (cocktail) => {
     dispatch(addCocktail(cocktail));
+  };
+
+  const onIngredientsHandler = (cocktail) => {
+    dispatch(showIngredients(cocktail));
   };
 
   return (
@@ -29,9 +34,7 @@ export const AllCocktails = ({ allCocktails, dispatch, query }) => {
               Add to Favourites
             </FavouriteButton>
             <RecipeButton
-              onClickHandler={() => {
-
-              }}
+              onClickHandler={() => onIngredientsHandler(cocktail)}
               icon={search}
             >
               Ingredients &#38; Recipe

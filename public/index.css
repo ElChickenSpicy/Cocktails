@@ -139,3 +139,11 @@ html, body, #root {
 .cocktail-image {
   width: 100%;
 }
+
+.ingredients {
+  margin-bottom: 15px;
+}
+
+.bold {
+  font-weight: bold;
+}
