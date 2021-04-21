@@ -55,7 +55,7 @@ html, body, #root {
 }
 
 .cocktail {
-  margin: 0px 15px 20px 0px;
+  margin-bottom: 20px;
   padding: 16px 14px;
   border-radius: 6px;
   border: solid 2px #000;
@@ -90,7 +90,7 @@ html, body, #root {
 
 .cocktail-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
@@ -130,7 +130,7 @@ html, body, #root {
   height: 12px;
 }
 
-.image-container, .recipe-container {
+.image-container {
   width: 100%;
   height: 160px;
   overflow: hidden;
@@ -146,4 +146,167 @@ html, body, #root {
 
 .bold {
   font-weight: bold;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1600px) {
+  .cocktail {
+    padding: 12px 11px;
+    width: 170px;
+  }
+
+  .image-container {
+    height: 120px;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 11px;
+  }
+  
+  .icon {
+    height: 11px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .cocktail {
+    padding: 10px 9px;
+    width: 150px;
+  }
+
+  .cocktail-name {
+    font-size: 18px;
+  }
+
+  .image-container {
+    height: 110px;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .button {
+    font-size: 10px;
+  }
+  
+  .icon {
+    margin-right: 4px;
+    height: 10px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  html, body, #root {
+    margin: 6px;
+  }
+
+  #logo {
+    height: 100px;
+  }
+
+  #search-icon {
+    top: 54px;
+    left: 180px;
+  }
+  
+  #search::placeholder {
+    font-size: 12px;
+  }
+  
+  #search-clear {
+    top: 56px;
+  }
+
+  .cocktail {
+    padding: 8px 6px;
+    width: 120px;
+  }
+
+  .cocktail-name {
+    font-size: 16px;
+  }
+
+  .image-container {
+    height: 90px;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 11px;
+  }
+
+  .button {
+    font-size: 8px;
+  }
+  
+  .icon {
+    margin-right: 4px;
+    height: 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cocktail-name {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  #search::placeholder {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html, body, #root {
+    margin: 4px;
+  }
+
+  #logo {
+    height: 80px;
+  }
+
+  #search {
+    font-size: 11px;
+    padding: 9px 20px 9px 29px;
+  }
+
+  #search-icon {
+    top: 41px;
+    left: 142px;
+  }
+
+  #search-clear {
+    top: 42px;
+    right: 20px;
+  }
+
+  .cocktail-name {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
 }

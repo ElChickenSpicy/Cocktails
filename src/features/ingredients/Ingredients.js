@@ -13,7 +13,7 @@ export const Ingredients = ({ ingredients }) => {
     return (
         ingredients.length !== 0 ?
         <div className="ingredients">
-            <h2>Make It Yourself</h2>
+            <h2>Make It Yourself: <span className="regular">The {ingredients.strDrink}</span></h2>
             <p><span className="bold">Ingredients:</span> {list.join(', ')}</p>
             <p><span className="bold">Instructions:</span> {ingredients.strInstructions}</p>
             <hr />

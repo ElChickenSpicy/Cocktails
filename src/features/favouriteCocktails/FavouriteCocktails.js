@@ -3,12 +3,17 @@ import FavouriteButton from "../../components/FavouriteButton";
 import RecipeButton from '../../components/RecipeButton';
 import Cocktail from "../../components/Cocktail";
 import { removeCocktail } from './favouriteCocktailsSlice.js';
+import { showIngredients } from '../ingredients/ingredientsSlice';
 import brokenHeart from '../../images/broken.svg';
 import search from '../../images/search.svg';
 
 export const FavouriteCocktails = ({ favouriteCocktails, dispatch }) => {
   const onRemoveCocktailHandler = (cocktail) => {
     dispatch(removeCocktail(cocktail));
+  };
+
+  const onIngredientsHandler = (cocktail) => {
+    dispatch(showIngredients(cocktail));
   };
 
   return (
@@ -28,13 +33,11 @@ export const FavouriteCocktails = ({ favouriteCocktails, dispatch }) => {
             Remove Favourite
           </FavouriteButton>
           <RecipeButton
-            onClickHandler={() => {
-              alert(cocktail.strInstructions);
-            }}
+            onClickHandler={() => onIngredientsHandler(cocktail)}
             icon={search}
           >
             Ingredients &#38; Recipe
-            </RecipeButton>
+          </RecipeButton>
         </div>
       </Cocktail>
     )

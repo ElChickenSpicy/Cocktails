@@ -24,7 +24,9 @@ export const AllCocktails = ({ allCocktails, dispatch, query }) => {
 
   return (
     <div className="cocktail-container">
-      {allCocktails.map((cocktail) => (
+
+      {allCocktails !== null ? 
+      allCocktails.map((cocktail) => (
         <Cocktail cocktail={cocktail} key={cocktail.idDrink}>
           <div className="button-container">
             <FavouriteButton
@@ -41,9 +43,10 @@ export const AllCocktails = ({ allCocktails, dispatch, query }) => {
             </RecipeButton>
           </div>
         </Cocktail>
-      ))}
+      )) : ''}
+
     </div>
   );
-};
+}; 
 
 
