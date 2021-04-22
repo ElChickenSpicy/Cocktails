@@ -1,33 +1,40 @@
-export const loadData = query => {
-  return async dispatch => {
-    try {
-      const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
-      if (response.ok) {
-        const { drinks } = await response.json();
-        dispatch({
-          type: 'allCocktails/loadData',
-          payload: drinks
-        })
-      }
-    } catch(err) {
-      alert(err);
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+//Thunk/Middleware logic
+export const loadData = createAsyncThunk(
+  'allCocktails/loadData',
+  async query => {
+    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
+    const { drinks } = await response.json();
+    return drinks;
+  }
+);
+
+//Create slice including extra reducer
+export const allCocktailsSlice = createSlice({
+  name: "allCocktails",
+  initialState: {
+    cocktails: [],
+    isLoading: false,
+    isError: false
+  },
+  reducers: {},
+  extraReducers: {
+    [loadData.pending]: state => {
+      state.isLoading = true;
+      state.isError = false;
+    },
+    [loadData.fulfilled]: (state, action) => {
+      state.isError = false;
+      state.isLoading = false;
+      state.cocktails = action.payload;
+    },
+    [loadData.rejected]: state => {
+      state.isLoading = false;
+      state.isError = true;
     }
   }
-}
+});
 
-const initialState = [];
-export const allCocktailsReducer = (allCocktails = initialState, action) => {
-  switch (action.type) {
-    case 'allCocktails/loadData':
-      return action.payload;
-    case 'favouriteCocktails/addCocktail':
-      return allCocktails.filter(cocktail => cocktail.idDrink !== action.payload.idDrink);
-    case 'favouriteCocktails/removeCocktail':
-      if (allCocktails.filter(cocktail => cocktail.idDrink === action.payload.idDrink) > 0) return allCocktails;
-      return [...allCocktails, action.payload]
-    default:
-      return allCocktails;
-  }
-}
-
-export const selectAllCocktails = state => state.allCocktails;
+export const selectAllCocktails = state => state.allCocktails.cocktails;
+export default allCocktailsSlice.reducer;

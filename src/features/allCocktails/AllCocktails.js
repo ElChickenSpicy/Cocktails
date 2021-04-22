@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Loading from '../../components/Loading.js';
 import Cocktail from "../../components/Cocktail";
 import FavouriteButton from "../../components/FavouriteButton";
 import RecipeButton from '../../components/RecipeButton';
@@ -13,6 +14,7 @@ import search from '../../images/search.svg';
 export const AllCocktails = () => {
   const allCocktails = useSelector(selectAllCocktails);
   const query = useSelector(selectSearchTerm);
+  const { isLoading } = useSelector(state => state.allCocktails);
   const dispatch = useDispatch();
 
   const onRender = () => {
@@ -28,10 +30,13 @@ export const AllCocktails = () => {
     dispatch(showIngredients(cocktail));
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="cocktail-container">
-
-      {allCocktails !== null ? 
+      {allCocktails ? 
       allCocktails.map((cocktail) => (
         <Cocktail cocktail={cocktail} key={cocktail.idDrink}>
           <div className="button-container">
@@ -50,7 +55,6 @@ export const AllCocktails = () => {
           </div>
         </Cocktail>
       )) : ''}
-
     </div>
   );
 }; 

@@ -21,24 +21,35 @@ Live version hosted on Netlify @ https://redux-cocktails.netlify.app/
 ## Libraries
 * React
 * Redux
-* redux-thunk
+* @reduxjs/toolkit
 
 ## Code Example
-Store/Root Reducer code
+createAsyncThunk & partial createSlice example
 ```javascript 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { allCocktailsReducer } from '../features/allCocktails/allCocktailsSlice.js';
-import { favouriteCocktailsReducer } from '../features/favouriteCocktails/favouriteCocktailsSlice.js';
-import { searchTermReducer } from '../features/searchTerm/searchTermSlice.js';
-import { ingredientsReducer } from '../features/ingredients/ingredientsSlice.js';
+//Thunk/Middleware logic
+export const loadData = createAsyncThunk(
+  'allCocktails/loadData',
+  async query => {
+    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
+    const { drinks } = await response.json();
+    return drinks;
+  }
+);
 
-export const store = createStore(combineReducers({
-  allCocktails: allCocktailsReducer,
-  favouriteCocktails: favouriteCocktailsReducer,
-  searchTerm: searchTermReducer,
-  ingredients: ingredientsReducer
-}), applyMiddleware(thunk));
+//Create slice including extra reducer
+export const allCocktailsSlice = createSlice({
+  name: "allCocktails",
+  initialState: {
+    cocktails: []
+  },
+  reducers: {},
+  extraReducers: {
+    [loadData.fulfilled]: (state, action) => {
+      state.cocktails = action.payload;
+    }
+  },
+  //...
+});
 ```
 
 ## Features

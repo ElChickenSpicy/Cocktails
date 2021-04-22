@@ -7,10 +7,9 @@ export const Ingredients = () => {
     let list = [];
     const keys = Object.keys(ingredients).filter(key => key.startsWith('strIngredient'));
     keys.forEach(key => {
-        if (ingredients[key] !== null) {
-            list.push(ingredients[key]);
-        }
+        if (ingredients[key] !== null) list.push(ingredients[key]);
     });
+    console.log(ingredients);
     return (
         ingredients.length !== 0 ?
             <div className="ingredients">

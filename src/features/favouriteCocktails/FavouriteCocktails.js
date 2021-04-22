@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import FavouriteButton from "../../components/FavouriteButton";
-import RecipeButton from '../../components/RecipeButton';
-import Cocktail from "../../components/Cocktail";
+import FavouriteButton from "../../components/FavouriteButton.js";
+import RecipeButton from '../../components/RecipeButton.js';
+import Cocktail from "../../components/Cocktail.js";
 import { removeCocktail, selectfavouriteCocktails } from './favouriteCocktailsSlice.js';
-import { showIngredients } from '../ingredients/ingredientsSlice';
+import { showIngredients } from '../ingredients/ingredientsSlice.js';
 import brokenHeart from '../../images/broken.svg';
 import search from '../../images/search.svg';
 

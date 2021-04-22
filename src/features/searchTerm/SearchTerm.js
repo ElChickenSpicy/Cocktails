@@ -10,8 +10,7 @@ export const SearchTerm = () => {
   const dispatch = useDispatch();
 
   const onSearchTermChangeHandler = ({ target }) => {
-    const userInput = target.value;
-    dispatch(setSearchTerm(userInput));
+    dispatch(setSearchTerm(target.value));
   };
 
   const onClearSearchTermHandler = () => {

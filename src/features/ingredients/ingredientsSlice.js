@@ -1,16 +1,12 @@
-const initialState = [];
-export const ingredientsReducer = (ingredients = initialState, action) => {
-  switch (action.type) {
-    case 'ingredients/showIngredients':
-      return action.payload;
-    default:
-      return ingredients;
-  }
-}
+import { createSlice } from '@reduxjs/toolkit';
 
-export function showIngredients(cocktail) {
-  return {
-    type: 'ingredients/showIngredients',
-    payload: cocktail
+export const ingredientsSlice = createSlice({
+  name: "ingredients",
+  initialState: [],
+  reducers: {
+    showIngredients: (state, action) => (state = action.payload)
   }
-}
+});
+
+export const { showIngredients } = ingredientsSlice.actions;
+export default ingredientsSlice.reducer;
