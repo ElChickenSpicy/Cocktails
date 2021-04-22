@@ -1,13 +1,17 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import FavouriteButton from "../../components/FavouriteButton";
 import RecipeButton from '../../components/RecipeButton';
 import Cocktail from "../../components/Cocktail";
-import { removeCocktail } from './favouriteCocktailsSlice.js';
+import { removeCocktail, selectfavouriteCocktails } from './favouriteCocktailsSlice.js';
 import { showIngredients } from '../ingredients/ingredientsSlice';
 import brokenHeart from '../../images/broken.svg';
 import search from '../../images/search.svg';
 
-export const FavouriteCocktails = ({ favouriteCocktails, dispatch }) => {
+export const FavouriteCocktails = () => {
+  const favouriteCocktails = useSelector(selectfavouriteCocktails);
+  const dispatch = useDispatch();
+
   const onRemoveCocktailHandler = (cocktail) => {
     dispatch(removeCocktail(cocktail));
   };
@@ -42,5 +46,4 @@ export const FavouriteCocktails = ({ favouriteCocktails, dispatch }) => {
       </Cocktail>
     )
   }
-
 };

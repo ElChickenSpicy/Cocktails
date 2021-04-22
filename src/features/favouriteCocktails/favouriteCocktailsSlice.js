@@ -24,3 +24,5 @@ export const favouriteCocktailsReducer = (favouriteCocktails = initialState, act
       return favouriteCocktails;
   }
 }
+
+export const selectfavouriteCocktails = state => state.favouriteCocktails;

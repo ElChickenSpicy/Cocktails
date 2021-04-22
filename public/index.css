@@ -236,7 +236,7 @@ html, body, #root {
 
   .cocktail {
     padding: 8px 6px;
-    width: 120px;
+    width: 140px;
   }
 
   .cocktail-name {
@@ -244,7 +244,7 @@ html, body, #root {
   }
 
   .image-container {
-    height: 90px;
+    height: 100px;
   }
 
   h2 {
@@ -276,6 +276,13 @@ html, body, #root {
 
   #search::placeholder {
     font-size: 10px;
+  }
+
+  .cocktail-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
   }
 }
 
@@ -309,5 +316,14 @@ html, body, #root {
 
   h2 {
     font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .cocktail {
+    width: 120px;
+  }
+  .image-container {
+    height: 85px;
   }
 }

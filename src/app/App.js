@@ -1,39 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Ingredients } from '../features/ingredients/Ingredients.js';
 import { AllCocktails } from '../features/allCocktails/AllCocktails.js';
 import { FavouriteCocktails } from '../features/favouriteCocktails/FavouriteCocktails.js';
 import { SearchTerm } from '../features/searchTerm/SearchTerm.js';
+import { selectSearchTerm } from '../features/searchTerm/searchTermSlice.js';
 
-export function App({ state, dispatch }) {
+export function App() {
+  const query = useSelector(selectSearchTerm);
   return (
     <main>
       <section>
-        <SearchTerm
-          searchTerm={state.searchTerm}
-          dispatch={dispatch}
-        />
+        <SearchTerm />
       </section>
       <section>
-        <Ingredients
-          ingredients={state.ingredients}
-        />
+        <Ingredients />
       </section>
       <section>
         <h2>Favourite Cocktails</h2>
-        <FavouriteCocktails
-          favouriteCocktails={state.favouriteCocktails}
-          dispatch={dispatch}
-        />
+        <FavouriteCocktails />
       </section>
       <hr />
       <section>
-        <h2>Cocktails: {state.searchTerm}</h2>
-        <AllCocktails
-          allCocktails={state.allCocktails}
-          dispatch={dispatch}
-          query={state.searchTerm}
-        />
+        <h2>Cocktails: {query}</h2>
+        <AllCocktails />
       </section>
-    </main> 
+    </main>
   );
 }

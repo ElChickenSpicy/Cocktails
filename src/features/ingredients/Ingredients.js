@@ -1,6 +1,8 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-export const Ingredients = ({ ingredients }) => {
+export const Ingredients = () => {
+    const ingredients = useSelector(state => state.ingredients);
 
     let list = [];
     const keys = Object.keys(ingredients).filter(key => key.startsWith('strIngredient'));
@@ -9,16 +11,15 @@ export const Ingredients = ({ ingredients }) => {
             list.push(ingredients[key]);
         }
     });
-    console.log(ingredients);
     return (
         ingredients.length !== 0 ?
-        <div className="ingredients">
-            <h2>Make It Yourself: <span className="regular">The {ingredients.strDrink}</span></h2>
-            <p><span className="bold">Ingredients:</span> {list.join(', ')}</p>
-            <p><span className="bold">Instructions:</span> {ingredients.strInstructions}</p>
-            <hr />
-        </div>
-        :
-        ''
+            <div className="ingredients">
+                <h2>Make It Yourself: <span className="regular">The {ingredients.strDrink}</span></h2>
+                <p><span className="bold">Ingredients:</span> {list.join(', ')}</p>
+                <p><span className="bold">Instructions:</span> {ingredients.strInstructions}</p>
+                <hr />
+            </div>
+            :
+            ''
     );
 };

@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Cocktail from "../../components/Cocktail";
 import FavouriteButton from "../../components/FavouriteButton";
 import RecipeButton from '../../components/RecipeButton';
 import { addCocktail } from '../favouriteCocktails/favouriteCocktailsSlice.js';
-import { loadData } from './allCocktailsSlice';
+import { loadData, selectAllCocktails } from './allCocktailsSlice';
 import { showIngredients } from '../ingredients/ingredientsSlice';
+import { selectSearchTerm } from '../searchTerm/searchTermSlice';
 import heart from '../../images/heart.svg';
 import search from '../../images/search.svg';
 
-export const AllCocktails = ({ allCocktails, dispatch, query }) => {
+export const AllCocktails = () => {
+  const allCocktails = useSelector(selectAllCocktails);
+  const query = useSelector(selectSearchTerm);
+  const dispatch = useDispatch();
+
   const onRender = () => {
     dispatch(loadData(query));
   }

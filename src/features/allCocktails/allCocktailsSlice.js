@@ -29,3 +29,5 @@ export const allCocktailsReducer = (allCocktails = initialState, action) => {
       return allCocktails;
   }
 }
+
+export const selectAllCocktails = state => state.allCocktails;
