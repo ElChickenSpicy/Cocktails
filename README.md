@@ -40,15 +40,19 @@ export const loadData = createAsyncThunk(
 export const allCocktailsSlice = createSlice({
   name: "allCocktails",
   initialState: {
-    cocktails: []
+    cocktails: [],
+    isLoading: false,
+    isError: false
   },
   reducers: {},
   extraReducers: {
     [loadData.fulfilled]: (state, action) => {
+      state.isError = false;
+      state.isLoading = false;
       state.cocktails = action.payload;
-    }
-  },
-  //...
+    },
+    //...
+  }
 });
 ```
 
